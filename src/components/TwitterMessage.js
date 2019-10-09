@@ -10,8 +10,8 @@ class TwitterMessage extends React.Component {
   }
 
   handleInput = event => {
-    this.setState((state) => {
-      return state.tweet = event.target.value
+    this.setState({
+      tweet: event.target.value
     })
   }
 
