@@ -10,24 +10,42 @@ class LoginForm extends React.Component {
     this.login = prop.handleLogin
   }
 
-  loginEvent(event){
+  // loginEvent(event){
+  //   event.preventDefault()
+  //   if(this.state.username.length !== 0 && this.state.password.length !== 0){
+  //     this.login(this.state)
+  //   }
+  // }
+
+  loginEvent = event => {
     event.preventDefault()
-    if(this.state.username.length !== 0 && this.state.password.length !== 0){
-      this.login(this.state)
+    // if username || password is empty return nothing
+    if(!this.state.username || !this.state.password){
+      return
     }
+    // else return the login
+    this.login(this.state)
   }
 
-  handleUserInput(event){
+  // controlled forms
+  handleChange = event => {
     this.setState({
-      username: event.target.value
+      [event.target.name]: event.target.value
     })
+    
   }
 
-  handlePassInput(event) {
-    this.setState({
-      password: event.target.value
-    })
-  }
+  // handleUserInput(event){
+  //   this.setState({
+  //     username: event.target.value
+  //   })
+  // }
+
+  // handlePassInput(event) {
+  //   this.setState({
+  //     password: event.target.value
+  //   })
+  // }
 
 
   render() {
@@ -36,13 +54,13 @@ class LoginForm extends React.Component {
         <div>
           <label>
             Username
-            <input id="username" name="username" type="text" value={this.state.username} onChange={event => this.handleUserInput(event)} />
+            <input id="username" name="username" type="text" value={this.state.username} onChange={event => this.handleChange(event)} />
           </label>
         </div>
         <div>
           <label>
             Password
-            <input id="password" name="password" type="password" value={this.state.password} onChange={event => this.handlePassInput(event)} />
+            <input id="password" name="password" type="password" value={this.state.password} onChange={event => this.handleChange(event)} />
           </label>
         </div>
         <div>
